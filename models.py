@@ -14,7 +14,7 @@ def connect_db(app):
 class User(db.Model):
     """User"""
 
-    ___tablename___ = 'users'
+    __tablename__ = 'users'
 
     username = db.Column(db.String(20), primary_key=True, nullable=False)
     password = db.Column(db.Text, nullable=False)
@@ -50,3 +50,32 @@ class User(db.Model):
             return False
     # end_authenticate
 
+class Note(db.Model):
+    """Notes"""
+
+    __tablename__ = 'notes'
+
+    id = db.Column(
+        db.Integer,
+        nullable=False,
+        primary_key=True,
+        autoincrement=True
+    )
+
+    title = db.Column(
+        db.String(100),
+        nullable=False,
+    )
+
+    content = db.Column(
+        db.Text,
+        nullable=False,
+    )
+
+    owner = db.Column(
+        db.String(20),
+        db.ForeignKey('users.username', ondelete="CASCADE"),
+        nullable=False
+    )
+
+    user = db.relationship("User")
