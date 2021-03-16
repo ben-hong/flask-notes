@@ -31,9 +31,9 @@
     <div>
         <ul>
         {% for note in user.notes %}
-        <a href="/notes/{{note.id}}/update"><button>Edit</button></a>
-        <a href="/notes/{{note.id}}/delete"><button>Delete</button></a>
         <li>
+            <a href="/notes/{{note.id}}/update"><button>Edit</button></a>
+            <a href="/notes/{{note.id}}/delete"><button>Delete</button></a>
             {{note.title}}: {{note.content}}
         </li>
         </ul>

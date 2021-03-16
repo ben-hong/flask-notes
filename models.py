@@ -22,6 +22,7 @@ class User(db.Model):
     first_name = db.Column(db.String(30), nullable=False)
     last_name = db.Column(db.String(30), nullable=False)
     
+    notes = db.relationship('Note')
     @classmethod
     def register(cls, username, pwd, email, first_name, last_name):
         """Register user w/hashed password & return user."""
